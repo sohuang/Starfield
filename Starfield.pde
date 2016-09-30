@@ -13,9 +13,14 @@ void setup() {
 
 void draw() {
 	for (int i = 0; i < theParticles.length; i++) {
-		// theParticles[i].bounce();
 		theParticles[i].move();
 		theParticles[i].show();
+	}
+}
+
+void mouseClicked() {
+	for (int i = 0; i < theParticles.length; i++) {
+		theParticles[i].restart();
 	}
 }
 
@@ -26,7 +31,7 @@ class NormalParticle implements Particle {
 	NormalParticle() {
 		myX = Math.random() * width;
 		myY = Math.random() * height;
-		mySpeed = Math.random() * 10;
+		mySpeed = Math.random() * 10 - 5;
 		myAngle = Math.random() * PI;
 		myWidth = myHeight = 5;
 	}
@@ -38,6 +43,13 @@ class NormalParticle implements Particle {
 	void move() {
 		myX += Math.cos(myAngle) * mySpeed;
 		myY += Math.sin(myAngle) * mySpeed;
+	}
+
+	void restart() {
+		myX = Math.random() * width;
+		myY = Math.random() * height;
+		mySpeed = Math.random() * 10 - 5;
+		myAngle = Math.random() * PI;
 	}
 }
 
@@ -54,7 +66,7 @@ class OddballParticle implements Particle {
 	OddballParticle() {
 		myX = Math.random() * width;
 		myY = Math.random() * height;
-		mySpeed = Math.random() * 6;
+		mySpeed = Math.random() * 6 - 3;
 		myAngle = Math.random() * PI;
 		myWidth = 30;
 		myHeight = 20;
@@ -68,6 +80,13 @@ class OddballParticle implements Particle {
 	void move() {
 		myX += Math.cos(myAngle) * mySpeed;
 		myY += Math.sin(myAngle) * mySpeed;
+	}
+
+	void restart() {
+		myX = Math.random() * width;
+		myY = Math.random() * height;
+		mySpeed = Math.random() * 6 - 3;
+		myAngle = Math.random() * PI;
 	}
 }
 
